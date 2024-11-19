@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/widgets/item_card.dart';
-import 'package:myapp/widgets/left_drawer.dart';
+import 'package:mango_mobile/widgets/item_card.dart';
+import 'package:mango_mobile/widgets/left_drawer.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});

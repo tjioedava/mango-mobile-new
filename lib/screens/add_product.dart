@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/widgets/left_drawer.dart';
+import 'package:mango_mobile/widgets/left_drawer.dart';
 
 class AddProductPage extends StatefulWidget {
   const AddProductPage({super.key});

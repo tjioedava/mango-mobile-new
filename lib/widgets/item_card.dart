@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/screens/add_product.dart';
+import 'package:mango_mobile/screens/add_product.dart';
 
 class ItemCardInfo {
   final String name;
