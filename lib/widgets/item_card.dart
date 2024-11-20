@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mango_mobile/screens/add_product.dart';
+import 'package:mango_mobile/screens/product_list.dart';
+import 'package:provider/provider.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:mango_mobile/screens/login.dart';
 
 class ItemCardInfo {
   final String name;
@@ -16,23 +20,48 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CookieRequest request = context.watch<CookieRequest>();
+
     return Material(
       color: item.color,
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
-        onTap: () {
+        onTap: () async {
           if (item.name == "Add a Product") {
             Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const AddProductPage(),
                 ));
+          } else if (item.name == "Show Products") {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProductPage(),
+                ));
+          } else if (item.name == "Logout") {
+            final response = await request
+                .logout("http://127.0.0.1:8000/authenticate/logout/");
+            String message = response["message"];
+            if (context.mounted) {
+              if (response['status']) {
+                String uname = response["username"];
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text("$message Sampai jumpa, $uname."),
+                ));
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
+                );
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(message),
+                  ),
+                );
+              }
+            }
           }
-
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(
-                content: Text("You have clicked button: \"${item.name}!\"")));
         },
         child: Container(
           padding: const EdgeInsets.all(8),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mango_mobile/screens/home.dart';
 import 'package:mango_mobile/screens/add_product.dart';
+import 'package:mango_mobile/screens/product_list.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -56,6 +57,17 @@ class LeftDrawer extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => const AddProductPage(),
+                  ));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.computer),
+            title: const Text('Show Products'),
+            onTap: () {
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ProductPage(),
                   ));
             },
           ),
