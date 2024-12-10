@@ -4,9 +4,10 @@ import 'package:provider/provider.dart';
 import 'package:mango_mobile/widgets/left_drawer.dart';
 import 'package:mango_mobile/models/product.dart';
 import 'package:mango_mobile/widgets/product_card.dart';
+import 'package:mango_mobile/constants/url.dart';
 
-class ProductPage extends StatelessWidget {
-  const ProductPage({super.key});
+class ProductsPage extends StatelessWidget {
+  const ProductsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +32,8 @@ class _ProductSectionState extends State<ProductSection> {
   var _filterOwn = false;
 
   Future<List<Product>> fetchProduct(CookieRequest request) async {
-    final response = await request
-        .get('http://127.0.0.1:8000/show-products?own=$_filterOwn');
+    final response =
+        await request.get('${DomainURL.urlLink}show-products?own=$_filterOwn');
 
     // Melakukan decode response menjadi bentuk json
     var data = response;

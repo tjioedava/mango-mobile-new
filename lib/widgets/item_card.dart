@@ -4,6 +4,7 @@ import 'package:mango_mobile/screens/product_list.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:mango_mobile/screens/login.dart';
+import 'package:mango_mobile/constants/url.dart';
 
 class ItemCardInfo {
   final String name;
@@ -37,11 +38,11 @@ class ItemCard extends StatelessWidget {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ProductPage(),
+                  builder: (context) => const ProductsPage(),
                 ));
           } else if (item.name == "Logout") {
             final response = await request
-                .logout("http://127.0.0.1:8000/authenticate/logout/");
+                .logout("${DomainURL.urlLink}authenticate/logout/");
             String message = response["message"];
             if (context.mounted) {
               if (response['status']) {

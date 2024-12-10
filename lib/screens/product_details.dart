@@ -80,6 +80,13 @@ class ProductDetailsPage extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(height: 8),
+            ElevatedButton(
+              child: const Icon(Icons.arrow_back_rounded, color: Colors.black),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
           ],
         ),
       ),

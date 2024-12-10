@@ -1,10 +1,10 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:mango_mobile/widgets/left_drawer.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:mango_mobile/screens/home.dart';
+import 'package:mango_mobile/constants/url.dart';
 
 class AddProductPage extends StatefulWidget {
   const AddProductPage({super.key});
@@ -135,7 +135,7 @@ class _AddProductPageState extends State<AddProductPage> {
                       if (_formKey.currentState!.validate()) {
                         // Kirim ke Django dan tunggu respons
                         final response = await request.postJson(
-                          "http://127.0.0.1:8000/create-product-mobile",
+                          '${DomainURL.urlLink}create-product-mobile',
                           jsonEncode(<String, String>{
                             'name': _name,
                             'price': _price.toString(),

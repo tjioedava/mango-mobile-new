@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:mango_mobile/screens/login.dart';
+import 'package:mango_mobile/constants/url.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -116,7 +117,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       String password2 = _confirmPasswordController.text;
 
                       final response = await request.postJson(
-                          "http://127.0.0.1:8000/authenticate/register/",
+                          '${DomainURL.urlLink}authenticate/register/',
                           jsonEncode({
                             "username": username,
                             "password1": password1,
