@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pbp_django_auth/pbp_django_auth.dart';
 import 'package:mango_mobile/screens/login.dart';
-import 'package:mango_mobile/screens/product_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
                 seedColor: const Color.fromARGB(255, 50, 78, 189)),
             useMaterial3: true,
           ),
-          home: const ProductPage(),
+          home: const LoginPage(),
         ));
   }
 }
